@@ -1,5 +1,9 @@
 class CranPackageParserService
-  Package = Struct.new(:name, :version)
+  Package = Struct.new(:name, :version) do
+    def path
+      "#{name}_#{version}"
+    end
+  end
 
   def self.parse(content)
     packages = content.split("\n\n")

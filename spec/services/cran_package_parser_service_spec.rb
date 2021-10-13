@@ -5,6 +5,10 @@ RSpec.describe CranPackageParserService, type: :service do
     expect(described_class.parse(content)).to eq(expected_list_of_packages)
   end
 
+  it "returns path for package" do
+    expect(expected_list_of_packages.first.path).to eq("A3_1.0.0")
+  end
+
   def content
     return (<<~PACKAGE)
       Package: A3
