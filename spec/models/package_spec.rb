@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Package, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { create(:package, name: "package") }
+
+  it "generates the package version link" do
+    expect(subject.version_url("1.0")).to eq("package_1.0")
+  end
 end
