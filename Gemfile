@@ -37,6 +37,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Use factory bot rails for fixtures
   gem 'factory_bot_rails'
+  # Use webmock to mock HTTP requests
+  gem "webmock"
 end
 
 group :development do
