@@ -20,14 +20,14 @@ RSpec.describe CranService, type: :service do
       stub_request(:get, "https://cran.r-project.org/src/contrib/A3_1.0.0.tar.gz")
         .to_return(
           status: 200,
-          body: package
+          body: package_content
         )
     end
 
     it "returns a package" do
       file = described_class.get_package(name_and_version: "A3_1.0.0")
       retrieved_package_hash = Digest::SHA256.hexdigest(file)
-      expected_package_hash = Digest::SHA256.hexdigest(package)
+      expected_package_hash = Digest::SHA256.hexdigest(package_content)
 
       expect(retrieved_package_hash).to eq(expected_package_hash)
     end
@@ -56,7 +56,7 @@ RSpec.describe CranService, type: :service do
     PACKAGE
   end
 
-  def package
+  def package_content
     file_path = Rails.root.join("spec", "fixtures", "A3_1.0.0.tar.gz")
     File.open(file_path).read
   end
