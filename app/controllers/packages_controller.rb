@@ -3,7 +3,7 @@ class PackagesController < ApplicationController
 
   # GET /packages or /packages.json
   def index
-    @packages = Package.all
+    @packages = Package.includes(:package_versions).all
   end
 
   # GET /packages/1 or /packages/1.json

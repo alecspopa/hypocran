@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Title</th>
       <th>Description</th>
+      <th>Versions</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,11 @@
         <td><%= package.name %></td>
         <td><%= package.title %></td>
         <td><%= package.description %></td>
+        <td>
+          <% package.package_versions.each do %>
+            <a href="<%= package.version_url(_1.name) %>"><%= _1.name %></a>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', package %></td>
         <td><%= link_to 'Edit', edit_package_path(package) %></td>
         <td><%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
